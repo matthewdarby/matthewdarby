@@ -1,0 +1,1 @@
+<a href="http://cfinnc.com" title="CFinNC - Carolina ColdFusion / Flex / Air Conference - Oct 17-18, 2009"><img src="http://cfinnc.com/2009/cfinnc-200x200-attending-2.gif" border="0" alt="CFinNC - Carolina ColdFusion / Flex / Air Conference - Oct 17-18, 2009"/></a>

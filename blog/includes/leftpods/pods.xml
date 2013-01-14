@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pods>
+	<files>
+	
+		<pod name="shelfari.cfm" sortorder="7"/>
+	
+		<pod name="aboutme.cfm" sortorder="2"/>
+	
+		<pod name="subscribe.cfm" sortorder="3"/>
+	
+		<pod name="twitter.cfm" sortorder="5"/>
+	
+		<pod name="tagcloud.cfm" sortorder="6"/>
+	
+		<pod name="recentcomments.cfm" sortorder="4"/>
+	
+		<pod name="search.cfm" sortorder="1"/>
+	
+	</files>
+</pods>

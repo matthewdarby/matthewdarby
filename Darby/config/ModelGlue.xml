@@ -1,0 +1,110 @@
+<modelglue>
+  <config>
+    <setting name="beanMappings" value="/Darby/config/beans/" />
+    <setting name="viewMappings" value="/Darby/views" />
+    <setting name="cssMapping" value="/Darby/css/" />
+    <setting name="imageMapping" value="/Darby/images/" />
+    <setting name="reload" value="true" />
+    <setting name="defaultEvent" value="Home" />
+    <setting name="debug" value="false" />
+    <setting name="eventValue" value="page" />    
+  </config>
+
+  <controllers>
+    <controller name="myController" type="Darby.controller.Controller">
+      <message-listener message="OnRequestStart" function="OnRequestStart" />
+      <message-listener message="OnRequestEnd" function="OnRequestEnd" />
+      <message-listener message="ShowContactForm" function="ShowContactForm" />
+      <message-listener message="InitContactForm" function="InitContactForm" />
+      <message-listener message="ContactSubmission" function="ContactSubmission" />
+    </controller>
+  </controllers>
+  
+  <event-handlers>
+ 
+    <event-handler name="Home">
+      <broadcasts />
+      <views>
+      	<include name="body" template="dspBody.cfm" />
+      </views>
+	  <results>
+		<result do="Layout" />
+	  </results>
+    </event-handler>
+    
+    <event-handler name="About">
+      <broadcasts />
+      <views>
+      	<include name="body" template="dspAbout.cfm" />
+      </views>
+	  <results>
+		<result do="Layout" />
+	  </results>
+    </event-handler>
+	
+    <event-handler name="Portfolio">
+      <broadcasts />
+      <views>
+      	<include name="body" template="dspPortfolio.cfm" />
+      </views>
+	  <results>
+		<result do="Layout" />
+	  </results>
+    </event-handler>	
+    
+    <event-handler name="Contact">
+      <broadcasts>
+      	<message name="InitContactForm" />
+      </broadcasts>
+	  <results>
+		<result do="ContactForm" />
+	  </results>
+    </event-handler>  
+    
+    <event-handler name="Submission">
+      <broadcasts>
+      	<message name="ContactSubmission" />
+      </broadcasts>
+      <results>
+      	<result name="invalid" do="ContactForm" />
+      	<result name="success" do="SuccessMessage" redirect="true" />
+      </results>	
+    </event-handler>  
+
+	<event-handler name="ContactForm" access="private">
+      <broadcasts>
+      	<message name="ShowContactForm" />
+      </broadcasts>
+      <views>
+      	<include name="body" template="dspContact.cfm" />
+      </views>	
+      <results>
+      	<result do="Layout" />
+      </results>	
+	</event-handler>
+	
+	<event-handler name="SuccessMessage">
+      <broadcasts />
+      <views>
+		<include name="body" template="dspSuccess.cfm" />
+	  </views>
+      <results>
+      	<result do="Layout" />
+      </results>		
+	</event-handler>
+	
+    <event-handler name="Exception">
+      <broadcasts />
+	  <views>
+    	<include name="body" template="dspException.cfm" />
+      </views>
+      <results />
+	</event-handler>
+	
+	<event-handler name="Layout" access="private">
+	  <views>
+		<include name="main" template="layPortal.cfm" />
+	  </views>
+    </event-handler>
+  </event-handlers>
+</modelglue>
