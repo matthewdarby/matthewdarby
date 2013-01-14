@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<dv_device>
+		<key>
+			<label>key</label>
+			<comment/>
+			<maxlength>11</maxlength>
+			<notProvided>The key field is required but was not provided.</notProvided>
+			<invalidType>The key field does not contain valid data.  This field must be a numeric value.</invalidType>
+			<invalidLength>The key field is too long.  This field must be no more than 11 bytes long.</invalidLength>
+		</key>
+		<name>
+			<label>name</label>
+			<comment/>
+			<maxlength>150</maxlength>
+			<notProvided>The name field is required but was not provided.</notProvided>
+			<invalidType>The name field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The name field is too long.  This field must be no more than 150 bytes long.</invalidLength>
+		</name>
+		<type>
+			<label>type</label>
+			<comment/>
+			<maxlength>50</maxlength>
+			<notProvided>The type field is required but was not provided.</notProvided>
+			<invalidType>The type field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The type field is too long.  This field must be no more than 50 bytes long.</invalidLength>
+		</type>
+		<manufacturer>
+			<label>manufacturer</label>
+			<comment/>
+			<maxlength>150</maxlength>
+			<notProvided>The manufacturer field is required but was not provided.</notProvided>
+			<invalidType>The manufacturer field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The manufacturer field is too long.  This field must be no more than 150 bytes long.</invalidLength>
+		</manufacturer>
+		<model>
+			<label>model</label>
+			<comment/>
+			<maxlength>100</maxlength>
+			<notProvided>The model field is required but was not provided.</notProvided>
+			<invalidType>The model field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The model field is too long.  This field must be no more than 100 bytes long.</invalidLength>
+		</model>
+		<serial>
+			<label>serial</label>
+			<comment/>
+			<maxlength>80</maxlength>
+			<invalidType>The serial field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The serial field is too long.  This field must be no more than 80 bytes long.</invalidLength>
+		</serial>
+		<picture>
+			<label>picture</label>
+			<comment/>
+			<maxlength>200</maxlength>
+			<invalidType>The picture field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The picture field is too long.  This field must be no more than 200 bytes long.</invalidLength>
+		</picture>
+		<additional_info>
+			<label>additional_info</label>
+			<comment/>
+			<maxlength>65537</maxlength>
+			<invalidType>The additional_info field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The additional_info field is too long.  This field must be no more than 65537 bytes long.</invalidLength>
+		</additional_info>
+		<date_created>
+			<label>date_created</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<notProvided>The date_created field is required but was not provided.</notProvided>
+			<invalidType>The date_created field does not contain valid data.  This field must be a date value.</invalidType>
+		</date_created>
+		<date_updated>
+			<label>date_updated</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<notProvided>The date_updated field is required but was not provided.</notProvided>
+			<invalidType>The date_updated field does not contain valid data.  This field must be a date value.</invalidType>
+		</date_updated>
+		<module>
+			<label>module</label>
+			<comment/>
+			<maxlength>3</maxlength>
+			<notProvided>The module field is required but was not provided.</notProvided>
+			<invalidType>The module field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The module field is too long.  This field must be no more than 3 bytes long.</invalidLength>
+		</module>
+	</dv_device>

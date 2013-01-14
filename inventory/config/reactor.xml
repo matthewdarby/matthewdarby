@@ -1,0 +1,67 @@
+<!DOCTYPE reactor SYSTEM "F:\WebSites\extensions\Reactor\Reactor.dtd">
+<reactor>
+	<config>
+		<dsn value="mbdinventory" />
+		<username value="blueTrane" />		
+		<password value="kjzGM9RlUo" />
+		<type value="mysql4" />
+		<mapping value="/component/reactor" />
+		<mode value="development" />
+		<project value="Matt" />
+	</config>
+	
+	<objects>
+		<object name="r_reference" alias="reference" />	
+		
+		<object name="r_set_subset_item" alias="setRule" />
+		
+		<object name="md_media_item">
+			<hasOne name="md_media">
+				<relate to="parent_key" from="key"/>
+				<relate to="module" from="type"/>
+			</hasOne>
+			<hasOne name="r_reference">
+				<relate to="module" from="module"/>
+			</hasOne>	
+			<link name="r_set_subset_item"	/>	
+		</object>
+		
+		<object name="st_store">
+			<hasOne name="md_media">
+				<relate to="key" from="parent_key"/>
+				<relate to="module" from="module" />
+			</hasOne>
+			<hasOne name="dv_device">
+				<relate to="key" from="parent_key"/>
+				<relate to="module" from="module" />
+			</hasOne>
+		</object>
+		
+		<object name="dv_device">
+			<hasOne name="st_store">
+				<relate to="parent_key" from="key" />
+				<relate to="module" from="module"/>
+			</hasOne>
+			<hasOne name="r_reference">
+				<relate to="module" from="module"/>
+			</hasOne>
+		</object>		
+		
+
+		<object name="md_media">
+			<hasOne name="st_store">
+				<relate to="parent_key" from="key" />
+				<relate to="module" from="module"/>
+			</hasOne>
+			<hasMany name="md_media_item">
+				<relate to="parent_key" from="key" />
+				<relate to="module" from="type"/>
+			</hasMany>
+			<hasOne name="r_reference">
+				<relate to="module" from="module"/>
+			</hasOne>		
+		</object>	
+ 				 
+	</objects>
+		
+</reactor>

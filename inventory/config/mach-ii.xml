@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="US-ASCII"?>
+<!DOCTYPE mach-ii SYSTEM "F:\WebSites\extensions\MACHII\mach-ii_1_1.dtd">
+<mach-ii version="1.0">
+
+	<!-- PROPERTIES -->
+	<properties>
+		<property name="applicationRoot" value="/" />
+		<property name="defaultEvent" value="public.home" />
+		<property name="eventParameter" value="page" />
+		<property name="parameterPrecedence" value="form" />
+		<property name="maxEvents" value="10" />
+		<property name="exceptionEvent" value="public.exception" />
+		<!-- configuration file for coldspring managed services -->
+		<property name="ColdSpringConfigFile" value="config/services.xml" />	
+		<property name="appConstantsConfigFile" value="/config/constantsFile.xml" />	
+	</properties>
+
+	<!-- LISTENERS -->
+	<listeners>
+		<listener name="DeviceListener" type="component.Device.DeviceListener">
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>
+		
+		<listener name="StoreListener" type="component.Store.StoreListener" >
+			<invoker type="MachII.framework.invokers.EventInvoker" />
+		</listener>	
+		
+		<listener name="MediaListener" type="component.Media.MediaListener" />		
+	</listeners>
+	
+	<!-- EVENT-FILTERS -->
+	<event-filters>
+		<event-filter name="eventArgs" type="MachII.filters.EventArgsFilter" />
+	</event-filters>
+
+	<!-- EVENT-HANDLERS -->
+	<event-handlers>
+	
+		<!-- ***************** DEVICE INFORMATION *********************** -->
+		
+		<event-handler event="device.main" access="public">
+			<filter name="eventArgs">
+				<parameter name="xfa.submit" value="device.list" />
+				<parameter name="hasOptions" value="false" />				
+			</filter>	
+			<view-page name="device.search" contentArg="content.pageBody" />					
+			<announce event="device.layout"  />
+		</event-handler>
+		
+		<event-handler event="device.all"  access="public">
+			<announce event="device.list" />
+		</event-handler>
+		
+		<event-handler event="device.list" access="public">
+			<notify listener="DeviceListener" method="getSearchResults"  resultArg="listedDevices" />	
+			<filter name="eventArgs">
+				<parameter name="xfa.doEdit" value="device.edit" />
+				<parameter name="xfa.doView" value="device.view" />
+				<parameter name="xfa.submit" value="device.list" />				
+				<parameter name="hasOptions" value="false" />
+			</filter>			
+			<view-page name="device.search" contentKey="content.pageBody" append="true" />
+			<view-page name="device.list" contentArg="content.pageBody" append="true" />
+			<announce event="device.layout" copyEventArgs="true" />
+		</event-handler>	
+		
+		<event-handler event="device.add" access="public">
+			<notify listener="DeviceListener" method="getTO"  resultArg="TO" />	
+			<filter name="eventArgs">
+				<parameter name="action" value="Add" />				
+				<parameter name="hasOptions" value="false" />
+			</filter>							
+			<announce event="device.showform" copyEventArgs="true" />			
+		</event-handler>		
+		
+		<event-handler event="device.edit" access="public">
+			<notify listener="DeviceListener" method="getDevice"  resultArg="TO" />	
+			<filter name="eventArgs">
+				<parameter name="action" value="Update" />				
+				<parameter name="hasOptions" value="true" />
+			</filter>							
+			<announce event="device.showform" copyEventArgs="true" />			
+		</event-handler>
+		
+		<event-handler event="device.showform" access="private">
+			<notify listener="DeviceListener" method="getCommonListValues" resultArg="viewItems" />										
+			<event-arg name="xfa.process" value="device.process" />
+			<event-arg name="xfa.prev" value="device.main" />
+			<view-page name="device.form" contentArg="content.pageBody" />			
+			<announce event="device.layout" copyEventArgs="true" />					
+		</event-handler>	
+
+		<event-handler event="device.process"  access="public">
+			<event-arg name="xfa.prev" value="device.main"  />
+			<event-arg name="xfa.form" value="device.showForm"  />
+			<notify listener="DeviceListener" method="validateAndProcess"/>
+		</event-handler>
+		
+		<event-handler event="device.view" access="public">
+			<notify listener="DeviceListener" method="getDevice"  resultArg="TO" />
+			<notify listener="StoreListener" method="checkForView" resultArg="storeTO" />				
+			<event-arg name="hasOptions" value="true" />
+			<view-page name="device.view" contentArg="content.pageBody" />
+			<announce event="device.layout" copyEventArgs="true" />								
+		</event-handler>
+		
+		<event-handler event="device.store" access="public">	
+			<notify listener="DeviceListener" method="getDevice"  resultArg="inventoryTO" />
+			<notify listener="StoreListener" method="checkExistingStore" />	
+			<event-arg name="xfa.process" value="store.process" />
+			<event-arg name="hasOptions" value="true" />				
+			<view-page name="store.form" contentArg="content.pageBody" />			
+			<announce event="device.layout" copyEventArgs="true" />											
+		</event-handler>			
+		
+		<event-handler event="device.layout" access="private">
+			<filter name="eventArgs">
+				<parameter name="objectSingular" value="Device" />	
+				<parameter name="objectPlural" value="Devices" />
+				<parameter name="xfa.media" value="media.main"/>
+				<parameter name="xfa.find" value="device.main" />											
+				<parameter name="xfa.add" value="device.add" />
+				<parameter name="xfa.device" value="device.main" />				
+				<parameter name="xfa.edit" value="device.edit" />
+				<parameter name="xfa.view" value="device.view" />
+				<parameter name="xfa.all" value="device.all" />	
+				<parameter name="xfa.store" value="device.store" />				
+			</filter>
+			<view-page name="device.sideBar" contentArg="content.seondaryNavContent"  />
+			<view-page name="framework.menu" contentArg="content.mainMenu" />
+			<view-page name="framework.layout" />
+		</event-handler>		
+		
+		<!-- ***************** MEDIA INFORMATION *********************** -->		
+		<event-handler event="media.main" access="public">
+			<notify listener="MediaListener" method="getCommonListValues" resultArg="viewItems" />				
+			<filter name="eventArgs">
+				<parameter name="xfa.submit" value="media.list" />			
+				<parameter name="hasOptions" value="false" />		
+				<parameter name="matchType" value="code" />		
+			</filter>			
+			<view-page name="media.search" contentArg="content.pageBody" />
+			<announce event="media.layout" copyEventArgs="true" />			
+		</event-handler>
+		
+		<event-handler event="media.list" access="public">
+			<notify listener="MediaListener" method="getSearchResults"  resultArg="resultList" />	
+			<notify listener="MediaListener" method="getCommonListValues" resultArg="viewItems" />				
+			<filter name="eventArgs">
+				<parameter name="xfa.doEdit" value="media.edit" />
+				<parameter name="xfa.doView" value="media.view" />
+				<parameter name="xfa.submit" value="media.list" />				
+				<parameter name="hasOptions" value="false" />
+				<parameter name="matchType" value="code" />																													
+			</filter>			
+			<view-page name="media.search" contentKey="content.pageBody" append="true" />
+			<view-page name="media.list" contentArg="content.pageBody" append="true" />
+			<announce event="media.layout" copyEventArgs="true" />
+		</event-handler>	
+
+		<event-handler event="media.all"  access="public">
+			<announce event="media.list" />
+		</event-handler>		
+		
+		<event-handler event="media.view" access="public">
+			<notify listener="MediaListener" method="getMedium"  resultArg="TO" />
+			<notify listener="StoreListener" method="checkForView" resultArg="storeTO" />				
+			<event-arg name="hasOptions" value="true" />
+			<view-page name="media.view" contentArg="content.pageBody" />
+			<announce event="media.layout" copyEventArgs="true" />								
+		</event-handler>				
+
+		<event-handler event="media.add" access="public">
+			<filter name="eventArgs">
+				<parameter name="action" value="Add" />				
+				<parameter name="hasOptions" value="false" />
+				<parameter name="matchType" value="code" />																																	
+			</filter>			
+			<notify listener="MediaListener" method="getTO"  resultArg="TO" />	
+			<announce event="media.showform" copyEventArgs="true" />			
+		</event-handler>
+		
+		<event-handler event="media.processAdd"  access="public">
+			<event-arg name="xfa.prev" value="media.main"  />
+			<event-arg name="xfa.form" value="media.showForm"  />
+			<notify listener="MediaListener" method="validateAndProcessRecordAndItems"/>
+		</event-handler>				
+		
+		<event-handler event="media.amazonSearch" access="public" >
+			<notify listener="MediaListener" method="getCommonListValues" resultArg="viewItems" />				
+			<filter name="eventArgs">
+				<parameter name="xfa.submit" value="media.callAmazon" />			
+				<parameter name="hasOptions" value="false" />																							
+				<parameter name="matchType" value="short_desc" />				
+			</filter>			
+			<view-page name="media.amazonSearchPage" contentArg="content.pageBody" />
+			<announce event="media.layout" copyEventArgs="true" />						
+		</event-handler>
+		
+		<event-handler event="media.callAmazon" access="public">
+			<notify listener="MediaListener" method="getAmazonResults" />	
+		</event-handler>
+		
+		<event-handler event="media.amazonList" access="private">
+			<notify listener="MediaListener" method="getCommonListValues" resultArg="viewItems" />				
+			<filter name="eventArgs">
+				<parameter name="xfa.process" value="media.amazonAdd" />
+				<parameter name="xfa.submit" value="media.callAmazon" />				
+				<parameter name="hasOptions" value="false" />
+				<parameter name="matchType" value="short_desc" />
+			</filter>			
+			<view-page name="media.amazonSearchPage" contentKey="content.pageBody" append="true" />
+			<view-page name="media.amazonResults" contentArg="content.pageBody" append="true" />
+			<announce event="media.layout" copyEventArgs="true" />			
+		</event-handler>
+		
+		<event-handler event="media.amazonAdd" access="public">
+			<filter name="eventArgs">
+				<parameter name="action" value="Add" />				
+				<parameter name="hasOptions" value="false" />
+				<parameter name="matchType" value="short_desc" />				
+			</filter>	
+			<notify listener="MediaListener" method="getItemData" resultArg="displayData" />										
+			<notify listener="MediaListener" method="getAmazonInfoAndTo"  />												
+		</event-handler>
+		
+		<event-handler event="media.edit" access="public">
+			<filter name="eventArgs">
+				<parameter name="action" value="Update" />				
+				<parameter name="hasOptions" value="true" />
+				<parameter name="matchType" value="code" />
+			</filter>							
+			<notify listener="MediaListener" method="getMedium"  resultArg="TO" />				
+			<notify listener="MediaListener" method="getItemData" resultArg="displayData" />																
+			<announce event="media.showform" copyEventArgs="true" />			
+		</event-handler>		
+
+		<event-handler event="media.showform" access="private">
+			<notify listener="MediaListener" method="getCommonListValues" resultArg="viewItems" />				
+			<event-arg name="xfa.process" value="media.process" />
+			<event-arg name="xfa.prev" value="media.main"/>				
+			<view-page name="media.form" contentArg="content.pageBody" />			
+			<announce event="media.layout" copyEventArgs="true" />					
+		</event-handler>	
+		
+		<event-handler event="media.process"  access="public">
+			<event-arg name="xfa.prev" value="media.main"  />
+			<event-arg name="xfa.form" value="media.showForm"  />
+			<notify listener="MediaListener" method="validateAndProcessRecordAndItems"/>
+		</event-handler>			
+					
+		<event-handler event="media.layout" access="private">
+			<notify listener="MediaListener" method="getStatus" resultArg="qryStatus"/>
+			<filter name="eventArgs">
+				<parameter name="objectSingular" value="Media" />	
+				<parameter name="objectPlural" value="Media" />
+				<parameter name="xfa.media" value="media.main"/>	
+				<parameter name="xfa.addAmazon" value="media.amazonSearch" />										
+				<parameter name="xfa.add" value="media.add" />
+				<parameter name="xfa.device" value="device.main" />				
+				<parameter name="xfa.edit" value="media.edit" />
+				<parameter name="xfa.view" value="media.view" />
+				<parameter name="xfa.all" value="media.all" />	
+				<parameter name="xfa.store" value="media.store" />
+				<parameter name="xfa.find" value="media.main" />									
+			</filter>
+			<view-page name="media.status" contentArg="content.StatusContent" />
+			<view-page name="media.sideBar" contentArg="content.seondaryNavContent"  />
+			<view-page name="framework.menu" contentArg="content.mainMenu" />
+			<view-page name="framework.layout" />
+		</event-handler>	
+		
+		<event-handler event="media.store" access="public">						
+			<notify listener="MediaListener" method="getMedium"  resultArg="inventoryTO" />	
+			<notify listener="StoreListener" method="checkExistingStore" />	
+			<event-arg name="xfa.process" value="store.process" />
+			<event-arg name="xfa.form" value="media.store" />
+			<event-arg name="xfa.prev" value="media.edit" />			
+			<event-arg name="hasOptions" value="true" />				
+			<view-page name="store.form" contentArg="content.pageBody" />	
+			<announce event="media.layout" copyEventArgs="true" />										
+		</event-handler>	
+		
+		<!-- ***************** STORE INFORMATION *********************** -->			
+		
+		<event-handler event="store.process"  access="public">		
+			<!-- <notify listener="StoreListener" method="getTO" resultArg="storeTO" /> -->
+			<notify listener="StoreListener" method="validateAndProcess"/>
+		</event-handler>		
+		
+		
+		<!-- Framework Events -->		
+		<event-handler event="public.home" access="public">
+			<view-page name="framework.home" contentArg="content.pageBody" />
+			<announce event="public.layout" />
+		</event-handler>		
+		
+		<event-handler event="public.layout" access="private">
+			<filter name="eventArgs">
+				<parameter name="xfa.device" value="device.main" />	
+				<parameter name="xfa.media" value="media.main" />				
+			</filter>			
+			<view-page name="framework.menu" contentArg="content.mainMenu" />
+			<view-page name="framework.layout" />
+		</event-handler>
+		
+		<event-handler event="public.exception" access="public">
+			<view-page name="framework.exception" />
+		</event-handler>
+	</event-handlers>
+	
+	<!-- PAGE-VIEWS -->
+	<page-views>
+		<!-- DEVICEES -->
+		<page-view name="device.view" page="/views/Devices/dspDevice.cfm" />
+		<page-view name="device.form" page="/views/Devices/dspDeviceForm.cfm" />
+		<page-view name="device.search" page="/views/Devices/dspDeviceSearch.cfm" />
+		<page-view name="device.list" page="/views/Devices/dspDeviceResults.cfm" />
+		<page-view name="device.sideBar" page="/views/Devices/dspSecondaryNav.cfm" />				
+
+		<!-- STORE -->
+		<page-view name="store.form" page="/views/Store/dspStoreForm.cfm" />
+		
+		<!-- MEDIA -->
+		<page-view name="media.view" page="/views/Media/dspMedia.cfm" />
+		<page-view name="media.search" page="/views/Media/dspMediaSearch.cfm" />
+		<page-view name="media.list" page="/views/Media/dspMediaResults.cfm" />
+		<page-view name="media.form" page="/views/Media/dspMediaForm.cfm" />
+		<page-view name="media.sideBar" page="/views/Media/dspSecondaryNav.cfm" />
+		<page-view name="media.amazonSearchPage" page="/views/Media/dspAmazonSearch.cfm"/>
+		<page-view name="media.amazonResults" page="/views/Media/dspAmazonResults.cfm" />	
+		<page-view name="media.status" page="/views/Media/dspStatus.cfm" />			
+		
+		<!-- FRAMEWORK -->
+		<page-view name="framework.secondaryNav" page="/views/Framework/dspSecondaryNav.cfm" />		
+		<page-view name="framework.home" page="/views/Framework/dspHome.cfm" />		
+		<page-view name="framework.menu" page="/views/Framework/dspMainMenu.cfm" />
+		<page-view name="framework.layout" page="/views/Framework/layPortal.cfm" />
+		<page-view name="framework.exception" page="/views/Framework/dspException.cfm" />
+	</page-views>
+	
+	<!-- PLUGINS -->
+	<plugins>
+		<plugin name="myselfPlugin" type="plugins.MyselfPlugin" />	
+		<plugin name="coldSpringPlugin" type="coldspring.machii.coldspringPlugin">
+			<parameters>
+			<!-- property name that the beanFactory will be stored in. Default: 'beanFactory' -->
+				<parameter name="beanFactoryPropertyName" value="serviceFactory"/>
+			<!-- mach-ii property name that holds the path to the coldspring config file -->
+				<parameter name="configFilePropertyName" value="ColdSpringConfigFile"/>
+			<!-- flag to indicate whether supplied config path is relative or absolute -->
+				<parameter name="configFilePathIsRelative" value="true"/>
+				<parameter name="resolveMachiiDependencies" value="true" />
+				<parameter name="placeFactoryInApplicationScope" value="true" />
+			</parameters>
+		</plugin>	
+		<plugin name="appConstants" type="MachII.plugins.appConstants">
+			<parameters>
+				<parameter name="constantsFile" value="/config/constantsFile.xml" /> 
+			</parameters> 
+		</plugin>
+	</plugins>		
+</mach-ii>

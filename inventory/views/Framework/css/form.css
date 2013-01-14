@@ -1,0 +1,139 @@
+fieldset {
+  min-width: 30%;
+  max-width: 100%;
+  width:expression(document.body.clientWidth < 400? "400" : document.body.clientWidth > 900? "900" : "auto");
+  padding: 1em;
+  margin-bottom: 1em;
+  border: 0;
+}
+
+fieldset.internal {
+  min-width:30%;
+  max-width:90%;
+  padding:1em;
+  font-weight:bold;
+  font-size:11px;
+  border:1px solid black;
+  margin-bottom:1em;
+}
+
+label, .label {
+  float: left;
+  width: 30%;
+  margin-right: 0.5em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  padding-right: 0.2em;
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+}
+span.value {
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  padding-right: 0.2em;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: bold;
+}
+legend {
+  padding: 0.2em 0.5em;
+  border: 1px solid;
+  text-align:right;
+}
+form {
+  min-width: 40%;
+  max-width: 98%;
+  width:expression(document.body.clientWidth < 400? "400" : document.body.clientWidth > 800? "800" : "auto");
+}
+
+input {
+  vertical-align: middle;
+  color: #000000;
+  background-color: #FFFFFF;
+  border-top:  solid 2px #C0C5CD;
+  border-right:  solid 2px #98A1B0;
+  border-bottom:  solid 2px #98A1B0;
+  border-left:  solid 2px #C0C5CD;
+}
+select {
+  color: #000000;
+  background-color: #FFFFFF;
+  border-top:  solid 2px #C0C5CD;
+  border-right:  solid 2px #98A1B0;
+  border-bottom:  solid 2px #98A1B0;
+  border-left:  solid 2px #C0C5CD;
+}
+textarea {
+  color: #000000;
+  background-color: #ffffff;
+  border-top:  solid 2px #C0C5CD;
+  border-right:  solid 2px #98A1B0;
+  border-bottom:  solid 2px #98A1B0;
+  border-left:  solid 2px #C0C5CD;
+  width: 250px;
+  height: 250px;
+}
+
+textarea.internal {
+	width: 100%;
+	height: 150px;
+}
+
+
+input.textField {
+  width: 250px;
+}
+
+input.shortText {
+  width: 150px;
+}
+
+input.dateField {
+	width: 200px;
+}
+
+input.checkbox {
+  vertical-align: middle;
+  border: 0px;
+  background: transparent;
+}
+input.radio {
+  vertical-align: middle;
+  border: 0px;
+  background: transparent;
+}
+input.button {
+  font: bold;
+  color: white;
+  background-color: #191C3E;
+  border-top:  solid 2px #C0C5CD;
+  border-right:  solid 2px #98A1B0;
+  border-bottom:  solid 2px #98A1B0;
+  border-left:  solid 2px #C0C5CD;
+  padding: 2px;
+  cursor: hand;
+  
+}
+/*  the row div is used to present display only data in a manner consistent with the look of a fieldset.  */
+div.row {
+  clear:both; 
+  width:100%;
+  padding-top:0.2em;
+  padding-bottom:0.2em;
+}
+div.row span.datalabel {
+  float:left;
+  width:39%;
+  margin-right:0.5em;
+  padding-right:0.2em;
+  text-align:right;
+  font-weight:bold;
+  vertical-align:middle;
+}
+div.row span.data {
+  width:59%;
+  margin-right:0.5em;
+  text-align:left;
+  vertical-align:middle;
+} 

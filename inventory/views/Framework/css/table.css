@@ -1,0 +1,51 @@
+table {
+	border-collapse: collapse;
+	border: 1px solid #666;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 14px;
+}
+
+col {
+	border-right: 1-x solid #ccc;
+}
+
+col#PictureCol {
+	border: none;
+}
+
+thead {
+	border-top: 1px solid #a5a5a5;
+	border-bottom: 1px solid #a5a5a5;
+}
+
+th, td  {
+	padding: 0.1em 1em;
+}
+
+th {
+	background: #ccc url(../images/bar.gif) repeat-x left center;
+	border-top: 1px solid #a5a5a5;
+	border-bottom: 1px solid #a5a5a5;
+	/*	background-color: #729DC4; */
+	color: black;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+}
+
+tr.row0 {
+	background-color: #F8EDED;
+}
+
+tr.row1 {
+	background-color: white;
+} 
+
+tr:hover {
+	background-color:#E3B5B5;
+	color: #fff;
+}
+
+thead tr:hover {
+	background-color: transparent;
+	color: inherit;
+}

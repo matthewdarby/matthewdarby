@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<md_media_item>
+		<key>
+			<label>key</label>
+			<comment/>
+			<maxlength>11</maxlength>
+			<notProvided>The key field is required but was not provided.</notProvided>
+			<invalidType>The key field does not contain valid data.  This field must be a numeric value.</invalidType>
+			<invalidLength>The key field is too long.  This field must be no more than 11 bytes long.</invalidLength>
+		</key>
+		<module>
+			<label>module</label>
+			<comment/>
+			<maxlength>4</maxlength>
+			<notProvided>The module field is required but was not provided.</notProvided>
+			<invalidType>The module field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The module field is too long.  This field must be no more than 4 bytes long.</invalidLength>
+		</module>
+		<set_code>
+			<label>set_code</label>
+			<comment/>
+			<maxlength>10</maxlength>
+			<notProvided>The set_code field is required but was not provided.</notProvided>
+			<invalidType>The set_code field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The set_code field is too long.  This field must be no more than 10 bytes long.</invalidLength>
+		</set_code>
+		<subset_code>
+			<label>subset_code</label>
+			<comment/>
+			<maxlength>25</maxlength>
+			<notProvided>The subset_code field is required but was not provided.</notProvided>
+			<invalidType>The subset_code field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The subset_code field is too long.  This field must be no more than 25 bytes long.</invalidLength>
+		</subset_code>
+		<item_code>
+			<label>item_code</label>
+			<comment/>
+			<maxlength>25</maxlength>
+			<notProvided>The item_code field is required but was not provided.</notProvided>
+			<invalidType>The item_code field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The item_code field is too long.  This field must be no more than 25 bytes long.</invalidLength>
+		</item_code>
+		<item_value>
+			<label>item_value</label>
+			<comment/>
+			<maxlength>65537</maxlength>
+			<notProvided>The item_value field is required but was not provided.</notProvided>
+			<invalidType>The item_value field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The item_value field is too long.  This field must be no more than 65537 bytes long.</invalidLength>
+		</item_value>
+		<parent_key>
+			<label>parent_key</label>
+			<comment/>
+			<maxlength>11</maxlength>
+			<notProvided>The parent_key field is required but was not provided.</notProvided>
+			<invalidType>The parent_key field does not contain valid data.  This field must be a numeric value.</invalidType>
+			<invalidLength>The parent_key field is too long.  This field must be no more than 11 bytes long.</invalidLength>
+		</parent_key>
+		<date_created>
+			<label>date_created</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<notProvided>The date_created field is required but was not provided.</notProvided>
+			<invalidType>The date_created field does not contain valid data.  This field must be a date value.</invalidType>
+		</date_created>
+		<date_updated>
+			<label>date_updated</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<notProvided>The date_updated field is required but was not provided.</notProvided>
+			<invalidType>The date_updated field does not contain valid data.  This field must be a date value.</invalidType>
+		</date_updated>
+	</md_media_item>

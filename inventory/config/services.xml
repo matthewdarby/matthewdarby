@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<beans>
+	
+	<bean id="reactorFactory" class="reactor.reactorFactory">
+		<constructor-arg name="configuration">
+			<value>/config/reactor.xml</value>
+		</constructor-arg>
+	</bean>
+
+	<bean id="utility" class="component.Utility">
+		<constructor-arg name="reactor">
+			<ref bean="reactorFactory" />
+		</constructor-arg>
+		<constructor-arg name="gatewayObjects">
+			<value>reference</value>
+		</constructor-arg>					
+	</bean>	
+	
+
+	<bean id="amazonWebService" class="component.AmazonWebService" >
+		<constructor-arg name="developerKey">
+			<value>16Q1P7FMQ025NDAQ31R2</value>
+		</constructor-arg>
+		<constructor-arg name="soapUrl">
+			<value>http://soap.amazon.com/schemas2/AmazonWebServices.wsdl</value>
+		</constructor-arg>
+		<constructor-arg name="awsUrl">
+			<value>http://webservices.amazon.com/onca/xml</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="setManager" class="component.SetManager">
+		<constructor-arg name="reactor">
+			<ref bean="reactorFactory" />
+		</constructor-arg>
+		<constructor-arg name="setGateway">
+			<value>setRule</value>
+		</constructor-arg>		
+		<constructor-arg name="referenceGateway">
+			<value>reference</value>
+		</constructor-arg>
+	</bean>
+		
+	<bean id="deviceManager" class="component.Device.DeviceManager">
+		<constructor-arg name="reactor">
+			<ref bean="reactorFactory" />
+		</constructor-arg>
+		<constructor-arg name="utility">
+			<ref bean="utility" />
+		</constructor-arg>
+		<constructor-arg name="table">
+			<value>dv_device</value>
+		</constructor-arg>
+		<constructor-arg name="module">
+			<value>DV</value>
+		</constructor-arg>
+		<constructor-arg name="gateways">
+			<value>reference</value>
+		</constructor-arg>
+		<constructor-arg name="childTables">
+			<value>st_store</value>
+		</constructor-arg>
+		<constructor-arg name="referenceList">
+			<value>DEVICE_TYPE</value>
+		</constructor-arg>		
+	</bean>
+	
+	<bean id="mediaManager" class="component.Media.MediaManager">
+		<constructor-arg name="reactor">
+			<ref bean="reactorFactory" />
+		</constructor-arg>
+		<constructor-arg name="utility">
+			<ref bean="utility" />
+		</constructor-arg>	
+		<constructor-arg name="setManager">
+			<ref bean="setManager" />
+		</constructor-arg>
+		<constructor-arg name="amazonService">
+			<ref bean="amazonWebService"/>
+		</constructor-arg>		
+		<constructor-arg name="table">
+			<value>md_media</value>
+		</constructor-arg>
+		<constructor-arg name="module">
+			<value>MD</value>
+		</constructor-arg>
+		<constructor-arg name="gateways">
+			<value>REFERENCE~setRule</value>
+		</constructor-arg>
+		<constructor-arg name="childTables">
+			<value>md_media_item~st_store</value>
+		</constructor-arg>		
+		<constructor-arg name="referenceList">
+			<value>MEDIA_TYPE</value>
+		</constructor-arg>
+		<property name="itemTableName">
+			<value>md_media_item</value>
+		</property>
+	</bean>	
+	
+	<bean id="storeManager" class="component.Store.StoreManager">
+		<constructor-arg name="reactor">
+			<ref bean="reactorFactory" />
+		</constructor-arg>
+		<constructor-arg name="utility">
+			<ref bean="utility" />
+		</constructor-arg>
+		<constructor-arg name="table">
+			<value>st_store</value>
+		</constructor-arg>
+		<constructor-arg name="module">
+			<value>ST</value>
+		</constructor-arg>
+		<constructor-arg name="gateways">
+			<value>reference~dv_device~md_media</value>
+		</constructor-arg>						
+	</bean>
+
+	<!-- Unit Testing Beans Only -->	
+	<bean id="inventoryManager" class="component.InventoryManager" singleton="true" lazy-init="true"> 
+		<constructor-arg name="reactor">
+			<ref bean="reactorFactory" />
+		</constructor-arg>
+		<constructor-arg name="utility">
+			<ref bean="utility" />
+		</constructor-arg>
+		<constructor-arg name="table">
+			<value>dv_device</value>
+		</constructor-arg>
+		<constructor-arg name="module">
+			<value>DV</value>
+		</constructor-arg>
+		<constructor-arg name="gateways">
+			<value>reference</value>
+		</constructor-arg>
+		<constructor-arg name="childTables">
+			<value>st_store</value>
+		</constructor-arg>		
+	</bean>	
+</beans>

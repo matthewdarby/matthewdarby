@@ -1,0 +1,44 @@
+a {
+	text-decoration: none;
+}
+
+a img {
+   border: none;
+}
+
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 14px;
+}
+
+hr {
+	border: 1px solid Black;
+}
+
+blockquote, pre {
+   padding: 0.25em 40px;
+}
+
+blockquote {
+	font: 13px Arial, Helvetica, sans-serif;
+	background: url(http://localhost/images/quote_block.gif) no-repeat -9px 0;
+	margin: 0.25em 0;
+}
+
+img {
+	margin: 0 10px 0 0;
+}
+
+
+.goodMessage, #goodMessage {
+	color: green;
+}
+
+.redFlag, #redFlag {
+	color: red;
+	font-weight: bold;
+}
+

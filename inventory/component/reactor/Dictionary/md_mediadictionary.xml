@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<md_media>
+		<key>
+			<label>key</label>
+			<comment/>
+			<maxlength>11</maxlength>
+			<notProvided>The key field is required but was not provided.</notProvided>
+			<invalidType>The key field does not contain valid data.  This field must be a numeric value.</invalidType>
+			<invalidLength>The key field is too long.  This field must be no more than 11 bytes long.</invalidLength>
+		</key>
+		<type>
+			<label>type</label>
+			<comment/>
+			<maxlength>20</maxlength>
+			<notProvided>The type field is required but was not provided.</notProvided>
+			<invalidType>The type field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The type field is too long.  This field must be no more than 20 bytes long.</invalidLength>
+		</type>
+		<length>
+			<label>length</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<invalidType>The length field does not contain valid data.  This field must be a date value.</invalidType>
+		</length>
+		<releaseYear>
+			<label>releaseYear</label>
+			<comment/>
+			<maxlength>4</maxlength>
+			<invalidType>The releaseYear field does not contain valid data.  This field must be a numeric value.</invalidType>
+			<invalidLength>The releaseYear field is too long.  This field must be no more than 4 bytes long.</invalidLength>
+		</releaseYear>
+		<website>
+			<label>website</label>
+			<comment/>
+			<maxlength>250</maxlength>
+			<invalidType>The website field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The website field is too long.  This field must be no more than 250 bytes long.</invalidLength>
+		</website>
+		<picture>
+			<label>picture</label>
+			<comment/>
+			<maxlength>250</maxlength>
+			<invalidType>The picture field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The picture field is too long.  This field must be no more than 250 bytes long.</invalidLength>
+		</picture>
+		<format>
+			<label>format</label>
+			<comment/>
+			<maxlength>25</maxlength>
+			<notProvided>The format field is required but was not provided.</notProvided>
+			<invalidType>The format field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The format field is too long.  This field must be no more than 25 bytes long.</invalidLength>
+		</format>
+		<genre>
+			<label>genre</label>
+			<comment/>
+			<maxlength>80</maxlength>
+			<notProvided>The genre field is required but was not provided.</notProvided>
+			<invalidType>The genre field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The genre field is too long.  This field must be no more than 80 bytes long.</invalidLength>
+		</genre>
+		<is_loaned>
+			<label>is_loaned</label>
+			<comment/>
+			<maxlength>1</maxlength>
+			<notProvided>The is_loaned field is required but was not provided.</notProvided>
+			<invalidType>The is_loaned field does not contain valid data.  This field must be a numeric value.</invalidType>
+			<invalidLength>The is_loaned field is too long.  This field must be no more than 1 bytes long.</invalidLength>
+		</is_loaned>
+		<loaned_to>
+			<label>loaned_to</label>
+			<comment/>
+			<maxlength>150</maxlength>
+			<invalidType>The loaned_to field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The loaned_to field is too long.  This field must be no more than 150 bytes long.</invalidLength>
+		</loaned_to>
+		<date_loaned>
+			<label>date_loaned</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<invalidType>The date_loaned field does not contain valid data.  This field must be a date value.</invalidType>
+		</date_loaned>
+		<is_legal>
+			<label>is_legal</label>
+			<comment/>
+			<maxlength>1</maxlength>
+			<notProvided>The is_legal field is required but was not provided.</notProvided>
+			<invalidType>The is_legal field does not contain valid data.  This field must be a numeric value.</invalidType>
+			<invalidLength>The is_legal field is too long.  This field must be no more than 1 bytes long.</invalidLength>
+		</is_legal>
+		<date_created>
+			<label>date_created</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<notProvided>The date_created field is required but was not provided.</notProvided>
+			<invalidType>The date_created field does not contain valid data.  This field must be a date value.</invalidType>
+		</date_created>
+		<date_updated>
+			<label>date_updated</label>
+			<comment/>
+			<maxlength>0</maxlength>
+			<notProvided>The date_updated field is required but was not provided.</notProvided>
+			<invalidType>The date_updated field does not contain valid data.  This field must be a date value.</invalidType>
+		</date_updated>
+		<module>
+			<label>module</label>
+			<comment/>
+			<maxlength>3</maxlength>
+			<notProvided>The module field is required but was not provided.</notProvided>
+			<invalidType>The module field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The module field is too long.  This field must be no more than 3 bytes long.</invalidLength>
+		</module>
+		<name>
+			<label>name</label>
+			<comment/>
+			<maxlength>150</maxlength>
+			<notProvided>The name field is required but was not provided.</notProvided>
+			<invalidType>The name field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The name field is too long.  This field must be no more than 150 bytes long.</invalidLength>
+		</name>
+		<ASIN>
+			<label>ASIN</label>
+			<comment/>
+			<maxlength>100</maxlength>
+			<invalidType>The ASIN field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The ASIN field is too long.  This field must be no more than 100 bytes long.</invalidLength>
+		</ASIN>
+		<UPC>
+			<label>UPC</label>
+			<comment/>
+			<maxlength>100</maxlength>
+			<invalidType>The UPC field does not contain valid data.  This field must be a string value.</invalidType>
+			<invalidLength>The UPC field is too long.  This field must be no more than 100 bytes long.</invalidLength>
+		</UPC>
+	</md_media>

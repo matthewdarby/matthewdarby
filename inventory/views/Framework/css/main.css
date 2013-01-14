@@ -1,0 +1,389 @@
+/* CSS Document */
+
+a {
+	text-decoration: none;
+}
+
+a img {
+   border: none;
+}
+
+
+body {
+	margin: 0;
+	padding: 0;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 14px;
+}
+
+hr {
+	border: 1px solid Black;
+}
+
+blockquote, pre {
+   padding: 0.25em 40px;
+}
+
+blockquote {
+	font: 13px Arial, Helvetica, sans-serif;
+	background: url(http://localhost/images/quote_block.gif) no-repeat -9px 0;
+	margin: 0.25em 0;
+}
+
+img {
+	margin: 0 10px 0 0;
+}
+
+
+.header, #header {
+	height:53px;
+	width: 100%;
+	padding: 0 0 0 0;
+	margin: 0 0 0 0;
+	background: url(http://localhost/images/red-background.gif) repeat-x;
+	background-color: #980101;
+	vertical-align: baseline;
+}
+
+ p.headertext, p#headertext   {
+	margin: 0px 0 0 0;
+	padding: 0 0 0 0;
+	font-size: 30px;
+	font-weight: bold;
+	color: white;	
+	font-family: Arial, Helvetica, sans-serif;
+	vertical-align: text-bottom;
+}
+
+.menurow, #menurow {
+	margin: 0px auto;
+	height: 28px;
+	width: 730px;
+	top: 54px;
+}
+
+p.menu_items, p#menu_items {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+	color: #980101;
+	margin: -5px;
+}
+
+#menurow li {
+	float: right;
+	list-style-type: none;
+	margin: -5px 0 0 0;
+	padding: 0;
+	white-space: nowrap;
+}
+
+#menurow ul {
+	margin: 0;
+	padding: 0;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 18px;
+	font-weight: bold;
+}
+#menurow a {
+	padding: 3px 10px 3px 10px;
+	text-decoration: none;
+}
+#menurow a:link, #menurow a:visited {
+	color: #980101;
+}
+#menurow a:hover, #menurow a:active {
+	background-color: #980101;
+	color: white;
+}
+
+#pageTop { 
+	position:relative;
+	left:0;
+	top:0; 
+} 
+
+#pageBottom { 
+	position:relative; 
+	left:0; 
+	top:0;
+}
+
+#workspace {
+	width: 800px;
+	position: relative;
+	left: 5%;
+	top: 0;	
+}
+
+#contentarea {
+	margin: 0px auto;
+	width: 80%;	
+	background-image: url(http://localhost/images/verticle-spacer.gif);
+	background-repeat: repeat-y;
+	background-position: right top;	
+}
+
+#contentbody {
+	padding: 0 15px 20px 0;
+	line-height: 1.5em;
+}
+
+#contentbody a:link, #contentbody a:visited {
+   color: #555; 
+	border-bottom: 1px solid #555;
+}
+
+#contentbody a:hover {
+   color: #000; 
+   background-color: #F4F2E4;
+   border-bottom: 1px solid #9A8E51;
+}
+
+#contentbody a.noStyle, #contentbody a:hover.noStyle {
+  text-decoration: none;
+  border-bottom: 0px;
+  background-color: none;
+}
+
+
+
+#contentbody p {
+	margin: 1em 0 1em 0;
+}
+
+#sideBar {
+	position:absolute; 
+	top:0; 
+	left:93%; 
+	width:20%;
+}
+
+.sideBarContent {
+	width: 100%;
+	padding: 2px;
+	border-width: 1px;
+	border-style: solid;
+	margin: auto;
+	margin-bottom: 10px;
+	margin-top: 10px;
+}
+
+.sideBarContent h3 {
+	font-family: Arial, Helvetica, sans-serif;
+	background-color: #980101;
+	text-align: center;
+	color: White;
+	margin: 0px;       
+}
+
+.sideBarContent p {
+	text-align: justify;
+}	
+
+.pageTitle, #pageTitle {
+	font-size: 20px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	margin: 2px 0 2px 0;
+}
+
+.subsection, #subsection {
+	margin: -8px 0 -5px 0;
+	padding: 0 0 14px 0;
+}
+
+.subheader, #subheader {
+	font-size: 16px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+}
+
+.subheaderTimestamp, #subheaderTimestamp {
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;	
+	color: #019898;
+}
+
+.goodMessage, #goodMessage {
+	color: green;
+}
+
+.redFlag, #redFlag {
+	color: red;
+	font-weight: bold;
+}
+
+
+#footer {
+	background: url(../images/red-background.gif) repeat-x;
+	background-color: #980101;
+	height: 20px;	
+}
+
+#footer p {
+	margin: 0 0 0 15px;
+	color: White;
+}
+
+fieldset {
+  min-width: 30%;
+  max-width: 100%;
+  width:expression(document.body.clientWidth < 400? "400" : document.body.clientWidth > 900? "900" : "auto");
+  padding: 1em;
+  margin-bottom: 1em;
+  border: 0;
+}
+
+ fieldset.internal {
+  min-width:30%;
+  max-width:90%;
+  padding:1em;
+  font-weight:bold;
+  font-size:11px;
+  border:1px solid black;
+  margin-bottom:1em;
+}
+
+label, .label {
+  float: left;
+  width: 30%;
+  margin-right: 0.5em;
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  padding-right: 0.2em;
+  text-align: right;
+  vertical-align: middle;
+  font-weight: bold;
+}
+span.value {
+  padding-top: 0.2em;
+  padding-bottom: 0.2em;
+  padding-right: 0.2em;
+  text-align: left;
+  vertical-align: middle;
+  font-weight: bold;
+}
+legend {
+  padding: 0.2em 0.5em;
+  border: 1px solid;
+  text-align:right;
+}
+form {
+  min-width: 40%;
+  max-width: 98%;
+  width:expression(document.body.clientWidth < 400? "400" : document.body.clientWidth > 800? "800" : "auto");
+}
+
+input {
+  vertical-align: middle;
+  color: #000000;
+  background-color: #FFFFFF;
+  border-top:  solid 2px #C0C5CD;
+  border-right:  solid 2px #98A1B0;
+  border-bottom:  solid 2px #98A1B0;
+  border-left:  solid 2px #C0C5CD;
+}
+select {
+  color: #000000;
+  background-color: #FFFFFF;
+  border-top:  solid 2px #C0C5CD;
+  border-right:  solid 2px #98A1B0;
+  border-bottom:  solid 2px #98A1B0;
+  border-left:  solid 2px #C0C5CD;
+}
+textarea {
+  color: #000000;
+  background-color: #ffffff;
+  border-top:  solid 2px #C0C5CD;
+  border-right:  solid 2px #98A1B0;
+  border-bottom:  solid 2px #98A1B0;
+  border-left:  solid 2px #C0C5CD;
+  width: 250px;
+  height: 250px;
+}
+
+textarea.internal {
+	width: 100%;
+	height: 150px;
+}
+
+
+input.textField {
+  width: 250px;
+}
+
+input.shortText {
+  width: 150px;
+}
+
+input.dateField {
+	width: 200px;
+}
+
+input.checkbox {
+  vertical-align: middle;
+  border: 0px;
+  background: transparent;
+}
+input.radio {
+  vertical-align: middle;
+  border: 0px;
+  background: transparent;
+}
+input.button {
+  font: bold;
+  color: white;
+  background-color: #191C3E;
+  border-top:  solid 2px #C0C5CD;
+  border-right:  solid 2px #98A1B0;
+  border-bottom:  solid 2px #98A1B0;
+  border-left:  solid 2px #C0C5CD;
+  padding: 2px;
+  cursor: hand;
+  
+}
+
+table {
+	border: none;
+	font-family: "Times New Roman", Times, serif;
+	font-size: 14px;
+}
+
+th {
+	background-color: #729DC4;
+	color: White;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 16px;
+}
+
+tr.row0 {
+	background-color: #F4F2E4;
+}
+
+tr.row1 {
+	background-color: white;
+} 
+
+/*  the row div is used to present display only data in a manner consistent with the look of a fieldset.  */
+div.row {
+  clear:both; 
+  width:100%;
+  padding-top:0.2em;
+  padding-bottom:0.2em;
+}
+div.row span.datalabel {
+  float:left;
+  width:39%;
+  margin-right:0.5em;
+  padding-right:0.2em;
+  text-align:right;
+  font-weight:bold;
+  vertical-align:middle;
+}
+div.row span.data {
+  width:59%;
+  margin-right:0.5em;
+  text-align:left;
+  vertical-align:middle;
+} 

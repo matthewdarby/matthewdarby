@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<constants>
+	<common>
+		<constant name="dbname" value="mbdinventory" />
+		<constant name="username" value="blueTrane" />
+		<constant name="password" value="kjzGM9RlUo" />
+		<constant name="mySelf" value="index.cfm?page=" />
+		<constant name="ajaxUrl" value="https://localhost/component/AjaxManager.cfc" />
+	</common>
+
+	<server name="localhost">
+		<constant name="imagesHome" value="/views/Framework/images/" />
+		<constant name="cssHome" value="/views/Framework/css/" />
+		<constant name="jsHome" value="/views/Framework/js/" />
+		<property name="property_name_1" value="property_value_1" />
+	</server>
+
+	<server name="matthewdarby.com">
+		<constant name="imagesHome" value="/Matt/views/Framework/images" />
+		<constant name="cssHome" value="/Matt/views/Framework/css/" />
+		<property name="property_name_1" value="property_value_1" />
+	</server>
+</constants>
